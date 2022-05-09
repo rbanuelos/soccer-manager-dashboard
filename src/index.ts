@@ -1,19 +1,17 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
-import { Color, ElementType, Tactic } from './model';
+import { Color, ElementArrow, ElementType, Tactic } from './model';
 
 dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT;
 
-console.log(port)
-
 app.get('/', (req: Request, res: Response) => {
   const tactic: Tactic = {
     id: 1,
     elements: [{
-      id:1,
+      id: 1,
       name: 'Player 1',
       position: {
         x: 10,
@@ -24,7 +22,28 @@ app.get('/', (req: Request, res: Response) => {
         arrow: null,
         color: Color.RED
       }
-
+    },
+    {
+      id: 2,
+      name: 'Ball',
+      position: {
+        x: 20,
+        y: 10
+      },
+      type: ElementType.BALL
+    },
+    {
+      id: 3,
+      name: 'Player 2',
+      position: {
+        x: 30,
+        y: 30
+      },
+      type: ElementType.PLAYER,
+      attributes: {
+        arrow: ElementArrow.RIGHT,
+        color: Color.BLUE
+      }
     }]
   }
   res.send(tactic);
