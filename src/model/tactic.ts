@@ -10,6 +10,7 @@ export enum ElementType {
     PLAYER, BALL
 }
 
+// main domain object
 export interface Tactic {
     id: number
     elements: Element[]
