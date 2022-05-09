@@ -2,7 +2,7 @@
 A lightweight API for a Soccer Manager Dashboard
 
 ## How to use
-Use npm to install, build and run!, Feel free to change default running `port=8000` in `.env` file
+Create a `.env` file at the root of the project with the following content `PORT=8000`
 
 ### Install
 ```bash
