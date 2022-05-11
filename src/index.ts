@@ -1,11 +1,15 @@
-import express, { Express, Request, Response } from 'express';
-import dotenv from 'dotenv';
-import { Color, ElementArrow, ElementType, Tactic } from './model';
+import express, { Express, Request, Response } from 'express'
+import dotenv from 'dotenv'
+import { Color, ElementArrow, ElementType, Tactic } from './model'
 
-dotenv.config();
+dotenv.config()
 
-const app: Express = express();
-const port = process.env.PORT;
+const app: Express = express()
+const port = process.env.PORT
+
+if (port === undefined) {
+  throw new Error('Invalid port value!')
+}
 
 app.get('/', (req: Request, res: Response) => {
   const tactic: Tactic = {
@@ -46,9 +50,9 @@ app.get('/', (req: Request, res: Response) => {
       }
     }]
   }
-  res.send(tactic);
-});
+  res.send(tactic)
+})
 
 app.listen(port, () => {
-  console.log(`⚡️[server] : Server is running at http://localhost:${port}`);
-});
+  console.log(`⚡️[server] : Server is running at http://localhost:${port}`)
+})

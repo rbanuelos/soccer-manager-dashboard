@@ -23,3 +23,6 @@ npm run start
 ```bash
 npm run dev
 ```
+
+## Coding Style
+This project was created using [standard JS](https://marketplace.visualstudio.com/items?itemName=standard.vscode-standard) extension for VSCode with `ts-standard` engine. 
