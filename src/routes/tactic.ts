@@ -1,5 +1,5 @@
 import express from 'express'
-import { Color, ElementArrow, ElementType, Tactic } from '../model'
+import { Color, ElementArrow, ElementType, Tactic } from '../models'
 
 const router = express.Router()
 
