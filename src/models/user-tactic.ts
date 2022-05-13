@@ -12,7 +12,7 @@ export enum ElementType {
   PLAYER, BALL
 }
 
-export interface User {
+export interface UserTactic {
   id?: ObjectId
   name: string
   tactics: Tactic[]

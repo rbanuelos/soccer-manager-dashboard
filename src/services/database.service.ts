@@ -1,7 +1,8 @@
 import * as mongoDB from 'mongodb'
 import * as dotenv from 'dotenv'
+import { UserTactic } from '../models'
 
-export const collections: { userTactics?: mongoDB.Collection } = {}
+export const collections: { userTactics?: mongoDB.Collection<UserTactic> } = {}
 
 export async function connectToDatabase (): Promise<void> {
   dotenv.config()
@@ -32,7 +33,7 @@ function getCollection (
   client: mongoDB.MongoClient,
   databaseName: string,
   collectionName: string
-): mongoDB.Collection {
+): mongoDB.Collection<UserTactic> {
   const db: mongoDB.Db = client.db(databaseName)
-  return db.collection(collectionName)
+  return db.collection<UserTactic>(collectionName)
 }
