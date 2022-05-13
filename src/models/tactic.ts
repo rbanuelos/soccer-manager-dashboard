@@ -1,13 +1,21 @@
+import { ObjectId } from 'mongodb'
+
 export enum ElementArrow {
-  UP, DOWN, LEFT, RIGHT
+  UP, UP_LEAFT, UP_RIGHT, DOWN, DOWN_LEFT, DOWN_RIGHT, LEFT, RIGHT
 }
 
 export enum Color {
-  WHITE, RED, BLUE
+  WHITE, BLACK, RED, BLUE
 }
 
 export enum ElementType {
   PLAYER, BALL
+}
+
+export interface User {
+  id?: ObjectId
+  name: string
+  tactics: Tactic[]
 }
 
 export interface Tactic {

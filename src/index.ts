@@ -1,6 +1,6 @@
 import express, { Express } from 'express'
 import dotenv from 'dotenv'
-import { tacticRouter } from './routes/tactic'
+import { tacticRouter } from './routes'
 
 dotenv.config()
 
