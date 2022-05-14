@@ -8,7 +8,7 @@ export async function connectToDatabase (): Promise<void> {
   dotenv.config()
   if (process.env.DB_CONN_STRING === undefined ||
     process.env.DB_NAME === undefined ||
-    process.env.GAMES_COLLECTION_NAME === undefined) {
+    process.env.TACTIC_COLLECTION_NAME === undefined) {
     throw Error('Missing DB configuration')
   }
 
@@ -19,8 +19,10 @@ export async function connectToDatabase (): Promise<void> {
   collections.userTactics = getCollection(
     client,
     process.env.DB_NAME,
-    process.env.GAMES_COLLECTION_NAME
+    process.env.TACTIC_COLLECTION_NAME
   )
+
+  console.log(collections.userTactics)
 }
 
 async function getConnectionClient (

@@ -1,20 +1,51 @@
 import express from 'express'
 import { UserTactic } from '../models'
-import { getUserTactics } from '../services'
+import { userTacticService } from '../services'
 
 const router = express.Router()
 router.use(express.json())
 
-router.get('/:userId', async (req, res): Promise<void> => {
-  const userId = req?.params?.userId
-  try {
-    const userTactic: UserTactic = await getUserTactics(userId)
-    if (userTactic) {
-      res.status(200).send(userTactic)
+router.get('/', (req, res) => {
+  void (async function (): Promise<void> {
+    try {
+      const tactis: UserTactic[] = await userTacticService.getTactics()
+      res.status(200).send(tactis)
+    } catch (error) {
+      res.status(400)
     }
-  } catch (error) {
-    res.status(400).send(`Unable to find ${req.params.userId}`)
-  }
+  })()
+})
+
+router.get('/:userId', (req, res) => {
+  void (async function (): Promise<void> {
+    try {
+      const userId = req?.params?.userId
+      const userTactic: UserTactic | null = await userTacticService.getUserTactics(+userId)
+      if (userTactic !== null) {
+        res.status(200).send(userTactic)
+      }
+    } catch (error) {
+      res.status(400).send(`Unable to find ${req.params.userId}`)
+    }
+  })()
+})
+
+router.post('/', (req, res) => {
+  void (async function (): Promise<void> {
+    try {
+      const userTactic = req.body as UserTactic
+      const result = await userTacticService.saveUserTactic(userTactic)
+      if (result !== undefined) {
+        res.status(201)
+          .send(`Successfully created a new game with id ${result.toString()}`)
+      } else {
+        res.status(500).send('Failed to create a entry.')
+      }
+    } catch (error) {
+      console.error(error)
+      res.status(400).send(error)
+    }
+  })()
 })
 
 export { router as tacticRouter }
