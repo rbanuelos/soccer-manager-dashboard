@@ -23,9 +23,11 @@ router.get('/:userId', (req, res) => {
       const userTactic: UserTactic | null = await userTacticService.getUserTactics(+userId)
       if (userTactic !== null) {
         res.status(200).send(userTactic)
+      } else {
+        res.status(404).send(`Unable to find ${req.params.userId}`)
       }
     } catch (error) {
-      res.status(400).send(`Unable to find ${req.params.userId}`)
+      res.status(500)
     }
   })()
 })

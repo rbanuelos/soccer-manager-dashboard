@@ -21,8 +21,6 @@ export async function connectToDatabase (): Promise<void> {
     process.env.DB_NAME,
     process.env.TACTIC_COLLECTION_NAME
   )
-
-  console.log(collections.userTactics)
 }
 
 async function getConnectionClient (

@@ -16,7 +16,7 @@ connectToDatabase()
   .then(() => {
     app.use('/user', tacticRouter)
     app.listen(port, () => {
-      console.log(`⚡️[server] : Server is running at http://localhost:${port}`)
+      console.log(`Server is running at http://localhost:${port}`)
     })
   })
   .catch((error: Error) => {
