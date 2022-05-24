@@ -34,5 +34,10 @@
     "nodemon": "^2.0.16",
     "ts-standard": "^11.0.0",
     "typescript": "^4.6.4"
+  },
+  "standard": {
+    "ignore": [
+      "db/init-mongo.js"
+    ]
   }
 }
