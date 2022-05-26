@@ -20,7 +20,8 @@ router.get('/:userId', (req, res) => {
   void (async function (): Promise<void> {
     try {
       const userId = req?.params?.userId
-      const userTactic: UserTactic | null = await userTacticService.getUserTactics(+userId)
+      const userTactic: UserTactic | null =
+        await userTacticService.getUserTactics(+userId)
       if (userTactic !== null) {
         res.status(200).send(userTactic)
       } else {
