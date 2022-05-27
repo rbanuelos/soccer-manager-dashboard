@@ -1,9 +1,6 @@
 # Soccer Manager Dashboard
 A lightweight API for a Soccer Manager Dashboard
 
-## How to use
-Create a `.env` file at the root of the project with the following content `PORT=8000`
-
 ### Install
 ```bash
 npm install

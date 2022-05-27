@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "447208b7-c562-4bec-b6e5-60c7a378189a",
+		"name": "soccer-manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1861579"
+	},
+	"item": [
+		{
+			"name": "GET /tactic",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/tactic",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tactic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /tactic",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Group 1\",\r\n    \"tactics\": [\r\n        {\r\n            \"sequence\": 0,\r\n            \"elements\": [\r\n                {\r\n                    \"id\": 1,\r\n                    \"name\": \"element 1\",\r\n                    \"type\": 0,\r\n                    \"position\": {\r\n                        \"x\": 30,\r\n                        \"y\": 30\r\n                    },\r\n                    \"attributes\": {\r\n                        \"arrow\": 0,\r\n                        \"number\": 2,\r\n                        \"color\": 0\r\n                    }\r\n                },\r\n                {\r\n                    \"id\": 2,\r\n                    \"name\": \"element 2\",\r\n                    \"type\": 0,\r\n                    \"position\": {\r\n                        \"x\": 40,\r\n                        \"y\": 30\r\n                    },\r\n                    \"attributes\": {\r\n                        \"arrow\": 1,\r\n                        \"number\": 3,\r\n                        \"color\": 0\r\n                    }\r\n                },\r\n                {\r\n                    \"id\": 3,\r\n                    \"name\": \"element 3\",\r\n                    \"type\": 0,\r\n                    \"position\": {\r\n                        \"x\": 50,\r\n                        \"y\": 30\r\n                    },\r\n                    \"attributes\": {\r\n                        \"arrow\": 1,\r\n                        \"number\": 4,\r\n                        \"color\": 0\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/tactic",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tactic"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
