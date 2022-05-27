@@ -26,7 +26,6 @@ npm run dev
 ```
 
 ## Debug with in development mode with nodemon
-Feel free to use the Run configuration in VSCode
 ![image](https://user-images.githubusercontent.com/654552/170778416-0e69339b-d503-4748-9525-174e7b1a68a8.png)
 
 ## Coding Style
