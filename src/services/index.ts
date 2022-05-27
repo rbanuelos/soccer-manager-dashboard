@@ -1,2 +1,2 @@
 export * from './database.service'
-export * from './user-tactic.service'
+export * from './tactic.service'

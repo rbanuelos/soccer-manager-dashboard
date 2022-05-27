@@ -1,25 +1,24 @@
 import { ObjectId } from 'mongodb'
 
 export enum ElementArrow {
-  UP, UP_LEAFT, UP_RIGHT, DOWN, DOWN_LEFT, DOWN_RIGHT, LEFT, RIGHT
+  UP, UP_LEFT, UP_RIGHT, DOWN, DOWN_LEFT, DOWN_RIGHT, LEFT, RIGHT
 }
 
 export enum Color {
-  WHITE, BLACK, RED, BLUE
+  RED, BLUE
 }
 
 export enum ElementType {
   PLAYER, BALL
 }
 
-export interface UserTactic {
+export interface TacticGroup {
   id?: ObjectId
-  name: string
   tactics: Tactic[]
 }
 
 export interface Tactic {
-  id: number
+  sequence: number
   elements: Element[]
 }
 
@@ -38,5 +37,6 @@ export interface ElementPosition {
 
 export interface ElementAttributes {
   arrow: ElementArrow | null
+  number: number
   color: Color
 }

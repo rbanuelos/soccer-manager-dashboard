@@ -1,1 +1,1 @@
-export * from './user-tactic.router'
+export * from './tactic.router'

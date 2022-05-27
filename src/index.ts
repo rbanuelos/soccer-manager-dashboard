@@ -14,7 +14,7 @@ if (port === undefined) {
 
 connectToDatabase()
   .then(() => {
-    app.use('/user', tacticRouter)
+    app.use('/tactic', tacticRouter)
     app.listen(port, () => {
       console.log(`Server is running at http://localhost:${port}`)
     })
