@@ -4,12 +4,12 @@ export enum ElementArrow {
   UP, UP_LEFT, UP_RIGHT, DOWN, DOWN_LEFT, DOWN_RIGHT, LEFT, RIGHT
 }
 
-export enum Color {
-  RED, BLUE
-}
-
 export enum ElementType {
   PLAYER, BALL
+}
+
+export enum Team {
+  TEAM_1, TEAM_2
 }
 
 export interface TacticGroup {
@@ -26,6 +26,7 @@ export interface Tactic {
 export interface Element {
   id: number
   name: string
+  index: number
   type: ElementType
   position: ElementPosition
   attributes?: ElementAttributes
@@ -39,5 +40,5 @@ export interface ElementPosition {
 export interface ElementAttributes {
   arrow: ElementArrow | null
   number: number
-  color: Color
+  team: string
 }
