@@ -21,7 +21,7 @@ router.get('/:tacticGroupId', (req, res) => {
     try {
       const tacticGroupId = req?.params?.tacticGroupId
       const tacticGroup: TacticGroup | null =
-        await tacticService.getTacticGroup(+tacticGroupId)
+        await tacticService.getTacticGroup(tacticGroupId)
       if (tacticGroup !== null) {
         res.status(200).send(tacticGroup)
       } else {

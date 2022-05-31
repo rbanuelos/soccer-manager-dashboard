@@ -4,11 +4,11 @@ import { TacticGroup } from '../models'
 
 class TacticService {
   async getAllTacticGroup (): Promise<TacticGroup[]> {
-    return (await collections.tacticGroup?.find({}).toArray()) as TacticGroup[]
+    return (await collections.tacticGroup?.find({}).project({ name: 1 }).toArray()) as TacticGroup[]
   }
 
   async getTacticGroup (
-    tacticGroupId: number
+    tacticGroupId: string
   ): Promise<TacticGroup | null> {
     const query = { _id: new ObjectId(tacticGroupId) }
     return (await collections.tacticGroup?.findOne(query)) as TacticGroup

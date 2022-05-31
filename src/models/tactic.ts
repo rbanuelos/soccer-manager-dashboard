@@ -14,6 +14,7 @@ export enum ElementType {
 
 export interface TacticGroup {
   id?: ObjectId
+  name: string
   tactics: Tactic[]
 }
 
