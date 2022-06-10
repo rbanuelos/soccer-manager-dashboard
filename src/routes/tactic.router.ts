@@ -42,11 +42,10 @@ router.post('/', (req, res) => {
         res.status(201)
           .send(`Successfully created a new tactic group with id ${String(result)}`)
       } else {
-        res.status(500).send('Failed to create a entry.')
+        res.status(400).send('Failed to create a entry.')
       }
     } catch (error) {
-      console.error(error)
-      res.status(400).send(error)
+      res.status(500).send(error)
     }
   })()
 })
@@ -71,7 +70,12 @@ router.put('/:tacticGroupId', (req, res) => {
 
       const result = await tacticService.updateGroupTactic(tacticGroupId, updatedTacticGroup)
 
-      res.status(200).send(result)
+      if (result === undefined) {
+        res.status(200).send(result)
+      } else {
+        // bad request
+        res.status(400).send('An error was found in the request object')
+      }
     } catch (error) {
       res.status(500)
     }
