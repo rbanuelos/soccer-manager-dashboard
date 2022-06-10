@@ -14,25 +14,23 @@ class TacticService {
     return (await collections.tacticGroup?.findOne(query)) as TacticGroup
   }
 
-  async saveGroupTactic (tacticGroup: TacticGroup): Promise<ObjectId | undefined> {
-    if (tacticGroup.id === undefined) {
-      return await this.insertGroupTactic(tacticGroup)
-    } else {
-      return await this.updateGroupTactic(tacticGroup)
-    }
-  }
-
-  async insertGroupTactic (tacticGroup: TacticGroup): Promise<ObjectId | undefined> {
+  async insertGroupTactic (tacticGroup: TacticGroup): Promise<string | undefined> {
     const inserted: ObjectId | undefined =
       (await collections.tacticGroup?.insertOne(tacticGroup))?.insertedId
-    return inserted
+    return inserted?.toString()
   }
 
-  async updateGroupTactic (tacticGroup: TacticGroup): Promise<ObjectId | undefined> {
-    const filter = { _id: new ObjectId(tacticGroup.id) }
-    const update = { $set: { tactics: tacticGroup.tactics } }
-    await collections.tacticGroup?.updateMany(filter, update)
-    return tacticGroup.id
+  async updateGroupTactic (tacticGroupId: string, tacticGroup: TacticGroup): Promise<string | undefined> {
+    const filter = { _id: new ObjectId(tacticGroupId) }
+    const update = {
+      $set:
+      {
+        name: tacticGroup.name,
+        tactics: tacticGroup.tactics
+      }
+    }
+    await collections.tacticGroup?.updateOne(filter, update)
+    return tacticGroupId
   }
 }
 

@@ -1,7 +1,13 @@
-import { ObjectId } from 'mongodb'
 
 export enum ElementArrow {
-  UP, UP_LEFT, UP_RIGHT, DOWN, DOWN_LEFT, DOWN_RIGHT, LEFT, RIGHT
+  TOP_LEFT = 'topLeft',
+  TOP = 'top',
+  TOP_RIGHT = 'topRight',
+  LEFT = 'left',
+  RIGHT = 'right',
+  BOTTOM_LEFT = 'bottomLeft',
+  BOTTOM = 'bottom',
+  BOTTOM_RIGHT = 'bottomRight'
 }
 
 export enum ElementType {
@@ -9,11 +15,11 @@ export enum ElementType {
 }
 
 export enum Team {
-  TEAM_1, TEAM_2
+  TEAM_1 = 'team1',
+  TEAM_2 = 'team2'
 }
 
 export interface TacticGroup {
-  id?: ObjectId
   name: string
   tactics: Tactic[]
 }
