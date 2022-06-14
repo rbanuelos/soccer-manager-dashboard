@@ -14,18 +14,21 @@ class TacticService {
     return (await collections.tacticGroup?.findOne(query)) as TacticGroup
   }
 
-  async insertGroupTactic (tacticGroup: TacticGroup): Promise<string | undefined> {
+  async insertGroupTactic (tacticGroup: TacticGroup): Promise<TacticGroup | null> {
     if (!this.checkTacticGroup(tacticGroup)) {
-      return undefined
+      return null
     }
-    const inserted: ObjectId | undefined =
+    const insertedId: ObjectId | undefined =
       (await collections.tacticGroup?.insertOne(tacticGroup))?.insertedId
-    return inserted?.toString()
+    if (insertedId !== undefined) {
+      return await this.getTacticGroup(insertedId.toString())
+    }
+    return null
   }
 
-  async updateGroupTactic (tacticGroupId: string, tacticGroup: TacticGroup): Promise<string | undefined> {
+  async updateGroupTactic (tacticGroupId: string, tacticGroup: TacticGroup): Promise<TacticGroup | null> {
     if (!this.checkTacticGroup(tacticGroup)) {
-      return undefined
+      return null
     }
     const filter = { _id: new ObjectId(tacticGroupId) }
     const update = {
@@ -36,7 +39,7 @@ class TacticService {
       }
     }
     await collections.tacticGroup?.updateOne(filter, update)
-    return tacticGroupId
+    return await this.getTacticGroup(tacticGroupId)
   }
 
   private checkTacticGroup (tacticGroup: TacticGroup): boolean {

@@ -37,10 +37,10 @@ router.post('/', (req, res) => {
   void (async function (): Promise<void> {
     try {
       const tacticGroup = req.body as TacticGroup
-      const result = await tacticService.insertGroupTactic(tacticGroup)
-      if (result !== undefined) {
+      const insertedTacticGroup: TacticGroup | null = await tacticService.insertGroupTactic(tacticGroup)
+      if (insertedTacticGroup !== null) {
         res.status(201)
-          .send(`Successfully created a new tactic group with id ${String(result)}`)
+          .send(insertedTacticGroup)
       } else {
         res.status(400).send('Failed to create a entry.')
       }
@@ -54,7 +54,7 @@ router.put('/:tacticGroupId', (req, res) => {
   void (async function (): Promise<void> {
     try {
       const tacticGroupId = req?.params?.tacticGroupId
-      const requestBodyTacticGroup = req.body as TacticGroup
+      const requestTacticGroup = req.body as TacticGroup
       const tacticGroup: TacticGroup | null =
         await tacticService.getTacticGroup(tacticGroupId)
 
@@ -64,14 +64,14 @@ router.put('/:tacticGroupId', (req, res) => {
       }
 
       const updatedTacticGroup: TacticGroup = {
-        name: requestBodyTacticGroup?.name,
-        tactics: requestBodyTacticGroup?.tactics
+        name: requestTacticGroup?.name,
+        tactics: requestTacticGroup?.tactics
       }
 
-      const result = await tacticService.updateGroupTactic(tacticGroupId, updatedTacticGroup)
+      const resultTacticGroup: TacticGroup | null = await tacticService.updateGroupTactic(tacticGroupId, updatedTacticGroup)
 
-      if (result === undefined) {
-        res.status(200).send(result)
+      if (resultTacticGroup !== null) {
+        res.status(200).send(resultTacticGroup)
       } else {
         // bad request
         res.status(400).send('An error was found in the request object')
