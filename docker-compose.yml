@@ -2,6 +2,7 @@ version: '3'
 services:
   database:
     image: 'mongo'
+    container_name: 'my-mongo-container'
     environment:
       - MONGO_INITDB_DATABASE=soccer-manager-db
       - MONGO_INITDB_ROOT_USERNAME=root
