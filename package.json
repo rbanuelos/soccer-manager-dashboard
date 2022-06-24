@@ -40,12 +40,12 @@
     "babel-core": "^6.26.3",
     "babel-jest": "^28.1.1",
     "concurrently": "^7.1.0",
+    "glob-parent": "^6.0.2",
     "jest": "^28.1.1",
     "nodemon": "^2.0.16",
     "ts-jest": "^28.0.5",
     "ts-standard": "^11.0.0",
-    "typescript": "^4.6.4",
-    "glob-parent": ">=5.1.2"
+    "typescript": "^4.6.4"
   },
   "standard": {
     "ignore": [
